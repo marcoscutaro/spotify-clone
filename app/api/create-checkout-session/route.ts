@@ -12,9 +12,9 @@ export async function POST(
   const { price, quantity = 1, metadata = {} } = await request.json();
 
   try {
-    const supabase = createRouteHandlerClient({ 
+    const supabase = createRouteHandlerClient({
       cookies
-      });      const {
+    }); const {
       data: { user }
     } = await supabase.auth.getUser();
 
@@ -35,13 +35,11 @@ export async function POST(
       ],
       mode: 'subscription',
       allow_promotion_codes: true,
-      subscription_data: {
-        trial_from_plan: true,
-        metadata
-      },
+     
       success_url: `${getURL()}/account`,
       cancel_url: `${getURL()}/`
     });
+    
 
     return NextResponse.json({ sessionId: session.id });
   } catch (err: any) {
