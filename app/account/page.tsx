@@ -21,7 +21,7 @@ const Account = () => {
           </h1>
         </div>
       </Header>
-  <AccountContent/>
+      <AccountContent />
     </div>
   )
 }

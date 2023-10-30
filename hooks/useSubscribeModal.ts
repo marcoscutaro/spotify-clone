@@ -1,16 +1,15 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-interface useSubscriptionModal {
-    isOpen: boolean;
-    onOpen: () => void;
-    onClose: () => void;
+interface SubscribeModalStore {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}
 
-};
+const useSubscribeModal = create<SubscribeModalStore>((set) => ({
+  isOpen: false,
+  onOpen: () => set({ isOpen: true }),
+  onClose: () => set({ isOpen: false }),
+}));
 
-const useSubscriptionModal = create<useSubscriptionModal>((set) => ({
-    isOpen : false,
-    onOpen:() => set({isOpen: true}),
-    onClose:() => set({isOpen: false}),
-}))
-
-export default useSubscriptionModal;
+export default useSubscribeModal;
